@@ -32,7 +32,7 @@ const App = () => {
 				<Route path="/notes/:type/:id" element={<NoteForm />} />
 				<Route path="/dashboard" element={<Dashboard />} />
 			</Routes>
-			<Footer />
+			{/*<Footer />*/}
 		</div>
 	);
 };
