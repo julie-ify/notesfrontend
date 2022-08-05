@@ -80,13 +80,14 @@ const reducer = (state = initialState, action) => {
 				notes: [...state.notes.concat(action.payload)],
 			};
 		case EDITNOTE:
-			const index = state.notes.findIndex((note) => note.id === action.id);
+			const index = state.notes.findIndex((note) => note.id === action.notesId);
 			const newNotesArray = [...state.notes];
 			newNotesArray[index] = action.payload;
 			return {
 				...state,
 				notes: newNotesArray,
 			};
+
 		case GETNOTES:
 			return {
 				...state,
@@ -104,3 +105,12 @@ const reducer = (state = initialState, action) => {
 };
 
 export default reducer;
+
+//case EDITNOTE:
+//			const index = state.notes.map((note) => {
+//				return ((note.id === action.notesId) ? action.payload : item)
+//			})
+//			return {
+//				...state,
+//				notes: index
+//			}

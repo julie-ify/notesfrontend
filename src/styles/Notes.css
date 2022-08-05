@@ -1,0 +1,18 @@
+.notes-container ul {
+	list-style: none;
+	display: grid;
+	padding: 0;
+	row-gap: 3em;
+	column-gap: 0.5em;
+}
+
+.notes-container ul li {
+	background-color: #222;
+	padding: 0.6em;
+	border-radius: 4%;
+}
+
+.btn-style {
+	display: flex;
+	justify-content: space-between;
+}

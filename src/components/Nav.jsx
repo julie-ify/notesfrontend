@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import { useAppState } from '../redux/appState';
 import Button from '@material-ui/core/Button';
+import '../styles/Nav.css'
 
 const Nav = () => {
 	const navigate = useNavigate();
@@ -15,17 +16,15 @@ const Nav = () => {
 	};
 	return (
 		<header>
-			<h1>Juliana's Note Taking App</h1>
-			<p>
+			
+			<h1>
 				{localStorage.getItem('auth')
-					? `Logged in user: ${
-							JSON.parse(localStorage.getItem('auth')).username
-					  }`
+					? `${JSON.parse(localStorage.getItem('auth')).username.charAt(0).toUpperCase()}${JSON.parse(localStorage.getItem('auth')).username.slice(1)}'s Notes`
 					: null}
-			</p>
+			</h1>
 			<nav>
 				{state.token ? (
-					<Button variant="contained" color="secondary" onClick={handleChange}>
+					<Button variant="text" color="secondary" onClick={handleChange}>
 						Logout
 					</Button>
 				) : (
