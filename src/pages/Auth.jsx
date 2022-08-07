@@ -1,7 +1,8 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useAppState } from '../redux/appState';
 import { useNavigate } from 'react-router';
+import '../styles/Auth.css';
 
 const Auth = () => {
 	const { form } = useParams();
@@ -60,23 +61,30 @@ const Auth = () => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<input
-				type="text"
-				value={formData.username}
-				placeholder="username"
-				name="username"
-				onChange={handleChange}
-			/>
-			<input
-				type="password"
-				value={formData.password}
-				placeholder="password"
-				name="password"
-				onChange={handleChange}
-			/>
-			<input type="submit" value={form} />
-		</form>
+		<>
+			<Link to={'/'} className='back-btn'>
+				<i className="fa fa-long-arrow-left"></i>
+			</Link>
+			<form onSubmit={handleSubmit} className='auth-form'>
+				<input
+					type="text"
+					className='user-name'
+					value={formData.username}
+					placeholder="username"
+					name="username"
+					onChange={handleChange}
+				/>
+				<input
+					type="password"
+					className='user-password'
+					value={formData.password}
+					placeholder="password"
+					name="password"
+					onChange={handleChange}
+				/>
+				<input type="submit" value={form} className='authentication-btn'/>
+			</form>
+		</>
 	);
 };
 

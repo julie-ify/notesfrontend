@@ -1,4 +1,4 @@
-header {
+.signed-nav {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -8,3 +8,10 @@ header {
 header h1 {
 	font-size: 20px;
 }
+
+.not-signed-nav {
+	display: flex;
+	justify-content: space-between;
+}
+
+

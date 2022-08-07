@@ -1,9 +1,8 @@
 import '../styles/Form.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { addNoteToApi, editNoteFromApi } from '../redux/reducer/notes';
-import Button from '@material-ui/core/Button';
 import Counter from '../components/Counter';
 
 const NoteForm = () => {
@@ -30,6 +29,13 @@ const NoteForm = () => {
 		note ? note.title.length : 0
 	);
 
+	//React.useEffect(() => {
+	//	const btn = document.getElementById('submit-note-btn');
+	//	if (titleCounter > 150 || bodyCounter > 250) {
+	//		btn.disabled = true;
+	//	}
+	//}, []);
+
 	const handleChange = (event) => {
 		setNoteState({
 			...noteState,
@@ -41,19 +47,30 @@ const NoteForm = () => {
 		} else {
 			setBodyCounter(event.target.value.length);
 		}
+		const btn = document.getElementById('submit-note-btn');
+		if (50 - titleCounter <= 0 || 250 - bodyCounter <= 0) {
+			btn.disabled = true;
+		} else {
+			btn.disabled = false;
+		}
 	};
 
 	//console.log(bodyCounter, titleCounter);
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		if (type === 'add') {
-			dispatch(addNoteToApi(noteState));
+
+		if (50 - titleCounter <= 0 || 250 - bodyCounter <= 0) {
+			return;
+		} else {
+			if (type === 'add') {
+				dispatch(addNoteToApi(noteState));
+			}
+			if (type === 'edit') {
+				dispatch(editNoteFromApi(noteState, id));
+			}
+			navigate('/dashboard');
 		}
-		if (type === 'edit') {
-			dispatch(editNoteFromApi(noteState, id));
-		}
-		navigate('/dashboard');
 	};
 
 	return (
@@ -80,17 +97,9 @@ const NoteForm = () => {
 					className="notes"
 				/>
 				<Counter noteLength={bodyCounter} type={'body'} note={note} />
-				<Button
-					type="submit"
-					style={{
-						textTransform: 'capitalize',
-						fontSize: 17,
-					}}
-					size="small"
-					variant="contained"
-					color="primary">
+				<button id="submit-note-btn" type="submit" disabled={false}>
 					{type}
-				</Button>
+				</button>
 			</form>
 		</>
 	);

@@ -1,5 +1,9 @@
 .App {
 	width: 90%;
-	margin: 0 auto;
+	margin: 1.5em auto 0em;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	position: relative;
 }
 
