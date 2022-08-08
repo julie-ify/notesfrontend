@@ -36,7 +36,7 @@ const Auth = () => {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify(formData),
-			}).then((response) => response.json());
+			}).then((response) => response.json()).catch(error => error)
 		},
 		login: () => {
 			return fetch(state.url + '/login/', {
@@ -53,22 +53,35 @@ const Auth = () => {
 		setFormData({ ...formData, [event.target.name]: event.target.value });
 	};
 
+	const error = document.createElement('p');
+	error.className = 'error';
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		actions[form]().then((data) => {
-			setUserData(data);
-		});
+
+		error.innerHTML = '';
+
+		if (formData.username === '' || formData.password === '') {
+			document.querySelector('.auth-form').appendChild(error);
+			error.innerHTML =
+				'<div><i className="fa-solid fa-triangle-exclamation"></i> username & password (>= 6 characters) is required <i className="fa-solid fa-triangle-exclamation"></i></div>';
+		} else {
+			actions[form]().then((data) => {
+				setUserData(data);
+			});
+		}
 	};
 
 	return (
 		<>
-			<Link to={'/'} className='back-btn'>
+			<Link to={'/'} className="back-btn">
 				<i className="fa fa-long-arrow-left"></i>
 			</Link>
-			<form onSubmit={handleSubmit} className='auth-form'>
+			<form onSubmit={handleSubmit} className="auth-form">
+				<h1>{form}</h1>
 				<input
 					type="text"
-					className='user-name'
+					className="user-name"
 					value={formData.username}
 					placeholder="username"
 					name="username"
@@ -76,13 +89,13 @@ const Auth = () => {
 				/>
 				<input
 					type="password"
-					className='user-password'
+					className="user-password"
 					value={formData.password}
 					placeholder="password"
 					name="password"
 					onChange={handleChange}
 				/>
-				<input type="submit" value={form} className='authentication-btn'/>
+				<input type="submit" value={form} className="authentication-btn" />
 			</form>
 		</>
 	);

@@ -15,9 +15,9 @@ const Nav = () => {
 		navigate('/');
 	};
 	return (
-		<header>
+		<header className="nav-header">
 			{state.token ? (
-				<div className='signed-nav'>
+				<div className="signed-nav">
 					<h1>
 						{localStorage.getItem('auth')
 							? `${JSON.parse(localStorage.getItem('auth'))
@@ -28,17 +28,20 @@ const Nav = () => {
 							: null}
 					</h1>
 					<nav>
-						<Button variant="text" color="secondary" onClick={handleChange}>
+						<Button
+							variant="text"
+							style={{ color: '#f98888' }}
+							onClick={handleChange}>
 							Logout
 						</Button>
 					</nav>
 				</div>
 			) : (
 				<div className="not-signed-nav">
-					<Link to="/auth/signup" className='sign-up btn btn-primary btn-lg'>
+					<Link to="/auth/signup" className="sign-up btn btn-outline-primary btn-lg">
 						<div>Signup</div>
 					</Link>
-					<Link to="/auth/login" className='sign-in btn btn-success btn-lg'>
+					<Link to="/auth/login" className="sign-in btn btn-outline-info btn-lg">
 						<div>Login</div>
 					</Link>
 				</div>

@@ -2,6 +2,11 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+}
+
+.nav-header {
+	background-color: rgb(8, 8, 63);
+	padding: 1em 1.5em;
 	margin-bottom: 3em;
 }
 
@@ -13,5 +18,3 @@ header h1 {
 	display: flex;
 	justify-content: space-between;
 }
-
-

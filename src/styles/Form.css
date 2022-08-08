@@ -34,11 +34,14 @@
 }
 
 #submit-note-btn {
-	background-color: rgb(156,39,176);
-	color: #fff;
+	background-color: #f98888;
+	color: #000;
 	font-size: 20px;
 	text-transform: capitalize;
 	padding: 15px;
+	outline: none;
+	border: 0;
+	box-shadow: 2px 2px rgb(17, 12, 12);
 }
 
 #submit-note-btn:hover {
