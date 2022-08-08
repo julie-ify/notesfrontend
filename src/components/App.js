@@ -24,16 +24,17 @@ const App = () => {
 	}, []);
 
 	return (
-		<div className="App">
+		<>
 			<Nav />
-			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/auth/:form" element={<Auth />} />
-				<Route path="/notes/:type/:id" element={<NoteForm />} />
-				<Route path="/dashboard" element={<Dashboard />} />
-			</Routes>
-			{/*<Footer />*/}
-		</div>
+			<div className="App">
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/auth/:form" element={<Auth />} />
+					<Route path="/notes/:type/:id" element={<NoteForm />} />
+					<Route path="/dashboard" element={<Dashboard />} />
+				</Routes>
+			</div>
+		</>
 	);
 };
 

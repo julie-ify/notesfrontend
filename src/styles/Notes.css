@@ -16,3 +16,14 @@
 	display: flex;
 	justify-content: space-between;
 }
+
+.empty-note {
+	padding: 0.6em;
+	font-size: 1.1em;
+	color: #000000;
+	background-color: #f98888;
+	display: flex;
+	justify-content: space-around;
+	flex-direction: row;
+	align-items: center;
+}

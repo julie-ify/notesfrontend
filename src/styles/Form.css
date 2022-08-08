@@ -22,7 +22,7 @@
 	font-size: 15px;
 }
 
-::placeholder {
+.note-form::placeholder {
 	font-size: 15px;
 	color: #222;
 	padding-left: 0.5em;
@@ -31,4 +31,24 @@
 .fa-long-arrow-left {
 	color: #fff;
 	font-size: 25px;
+}
+
+#submit-note-btn {
+	background-color: #f98888;
+	color: #000;
+	font-size: 20px;
+	text-transform: capitalize;
+	padding: 15px;
+	outline: none;
+	border: 0;
+	box-shadow: 2px 2px rgb(17, 12, 12);
+}
+
+#submit-note-btn:hover {
+	background-color: rgb(87, 7, 114);
+}
+
+#submit-note-btn:disabled {
+	background-color: rgb(90, 83, 83);
+	color: #222;
 }

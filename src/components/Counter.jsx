@@ -5,7 +5,7 @@ const Counter = (props) => {
 	let maxlength;
 
 	if (type === 'title') {
-		maxlength = 150 - noteLength;
+		maxlength = 50 - noteLength;
 	}
 
 	if (type === 'body') {
@@ -14,7 +14,7 @@ const Counter = (props) => {
 	//console.log(noteLength);
 	return (
 		<div>
-			<span className={maxlength <= 0 ? 'red-counter' : 'blue-counter'}>
+			<span className={maxlength < 0 ? 'red-counter' : 'blue-counter'}>
 				{maxlength}
 			</span>
 		</div>

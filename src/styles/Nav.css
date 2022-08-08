@@ -1,10 +1,20 @@
-header {
+.signed-nav {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+}
+
+.nav-header {
+	background-color: rgb(8, 8, 63);
+	padding: 1em 1.5em;
 	margin-bottom: 3em;
 }
 
 header h1 {
 	font-size: 20px;
+}
+
+.not-signed-nav {
+	display: flex;
+	justify-content: space-between;
 }

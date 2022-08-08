@@ -1,0 +1,35 @@
+footer {
+	margin-top: auto;
+	padding: 1.5em;
+	background-color: rgb(8, 8, 63);
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+footer ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.add {
+	position: absolute;
+	top: -50%;
+	left: 41%;
+}
+
+.fa-plus-circle:hover {
+	color: #f98888;
+}
+
+.fa-plus-circle {
+	color: #fba1a1;
+	background-color: rgb(8, 8, 63);
+	border-radius: 50%;
+	box-shadow: 2px 5px 5px rgb(37, 13, 13);
+}
