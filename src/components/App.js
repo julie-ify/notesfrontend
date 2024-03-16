@@ -12,7 +12,7 @@ import { useAppState } from '../redux/appState';
 const App = () => {
 	const navigate = useNavigate();
 	const { state, dispatch } = useAppState();
-	
+
 	React.useEffect(() => {
 		const auth = JSON.parse(localStorage.getItem('auth'));
 		if (auth) {

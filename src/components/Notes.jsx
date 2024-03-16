@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import { getNotesFromApi, deleteNotesFromApi } from '../redux/reducer/notes';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Notes.css';
 import Footer from './Footer';
 
 const Notes = () => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const notes = useSelector((state) => state.notes);
 
@@ -52,7 +54,8 @@ const Notes = () => {
 											}}
 											size="small"
 											variant="text"
-											onClick={() => handleDelete(note.id)}>
+											onClick={() => handleDelete(note.id)}
+										>
 											Delete Note
 										</Button>
 										<Button
@@ -61,7 +64,8 @@ const Notes = () => {
 												fontSize: 17,
 											}}
 											size="small"
-											variant="text">
+											variant="text"
+										>
 											<Link to={`/notes/edit/${note.id}`}>
 												<div>Edit Note</div>
 											</Link>
@@ -71,8 +75,12 @@ const Notes = () => {
 							))}
 					</ul>
 				)}
+				<footer>
+					<div onClick={() => navigate(`/notes/add/add`)}>
+						<i className="fa-solid fa-pen-to-square"></i>
+					</div>
+				</footer>
 			</div>
-			<Footer />
 		</>
 	);
 };
