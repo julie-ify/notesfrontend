@@ -3,16 +3,15 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { addNoteToApi, editNoteFromApi } from '../redux/reducer/notes';
-import Counter from '../components/Counter';
 
 const NoteForm = () => {
 	const dispatch = useDispatch();
 	const notes = useSelector((state) => state.notes);
 	const { type, id } = useParams();
 	let note = notes.find((note) => note.id === parseInt(id));
-	//console.log(type, id, note);
 	let navigate = useNavigate();
 
+	const [error, setError] = useState('');
 	const [noteState, setNoteState] = React.useState(
 		note
 			? {
@@ -29,13 +28,6 @@ const NoteForm = () => {
 		note ? note.title.length : 0
 	);
 
-	//React.useEffect(() => {
-	//	const btn = document.getElementById('submit-note-btn');
-	//	if (titleCounter > 150 || bodyCounter > 250) {
-	//		btn.disabled = true;
-	//	}
-	//}, []);
-
 	const handleChange = (event) => {
 		setNoteState({
 			...noteState,
@@ -47,37 +39,35 @@ const NoteForm = () => {
 		} else {
 			setBodyCounter(event.target.value.length);
 		}
-		const btn = document.getElementById('submit-note-btn');
-		if (50 - titleCounter <= 0 || 250 - bodyCounter <= 0) {
-			btn.disabled = true;
-		} else {
-			btn.disabled = false;
-		}
 	};
-
-	//console.log(bodyCounter, titleCounter);
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
-		if (50 - titleCounter <= 0 || 250 - bodyCounter <= 0) {
+		if (titleCounter < 3) {
+			setError('title is too short (minimum is 3 characters)');
 			return;
-		} else {
-			if (type === 'add') {
-				dispatch(addNoteToApi(noteState));
-			}
-			if (type === 'edit') {
-				dispatch(editNoteFromApi(noteState, id));
-			}
-			navigate('/dashboard');
 		}
+
+		if (bodyCounter < 3) {
+			setError('body is too short (minimum is 3 characters)');
+			return;
+		}
+
+		if (type === 'add') {
+			dispatch(addNoteToApi(noteState));
+		}
+		if (type === 'edit') {
+			dispatch(editNoteFromApi(noteState, id));
+		}
+		navigate('/dashboard');
 	};
 
 	return (
 		<>
 			<form onSubmit={handleSubmit} className="note-form">
 				<Link to="/dashboard">
-					<i className="fa fa-long-arrow-left" aria-hidden="true"></i>
+					<span className="primary-color btn-font">Go back</span>
 				</Link>
 				<textarea
 					type="text"
@@ -87,7 +77,6 @@ const NoteForm = () => {
 					onChange={handleChange}
 					className="title"
 				/>
-				<Counter noteLength={titleCounter} type={'title'} note={note} />
 				<textarea
 					type="text"
 					value={noteState.body}
@@ -96,10 +85,10 @@ const NoteForm = () => {
 					onChange={handleChange}
 					className="notes"
 				/>
-				<Counter noteLength={bodyCounter} type={'body'} note={note} />
 				<button id="submit-note-btn" type="submit" disabled={false}>
 					{type}
 				</button>
+				{error && <span>{error}</span>}
 			</form>
 		</>
 	);

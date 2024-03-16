@@ -7,7 +7,7 @@
 }
 
 .notes-container ul li {
-	background-color: #222;
+	background-color: #fff;
 	padding: 0.6em;
 	border-radius: 4%;
 }
@@ -19,7 +19,7 @@
 
 .empty-note {
 	padding: 0.6em;
-	font-size: 1.1em;
+	font-size: 0.9em;
 	color: #000000;
 	background-color: #f98888;
 	display: flex;

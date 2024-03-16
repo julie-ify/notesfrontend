@@ -1,7 +1,6 @@
 .auth-form {
 	display: flex;
 	flex-direction: column;
-	padding-top: 10em;
 	row-gap: 2em;
 	width: 100%;
 }
@@ -9,10 +8,6 @@
 .auth-form h1 {
 	align-self: center;
 	text-transform: capitalize;
-}
-
-.back-btn {
-	margin-top: 4em;
 }
 
 .auth-form::placeholder {

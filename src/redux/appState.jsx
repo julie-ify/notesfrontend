@@ -1,9 +1,10 @@
 import React, { useReducer } from 'react';
 
 const initialState = {
-	url: 'https://julienotesbackend.herokuapp.com',
+	url: 'http://localhost:3000/',
 	token: null,
 	username: null,
+	role: null,
 };
 
 const reducer = (state, action) => {

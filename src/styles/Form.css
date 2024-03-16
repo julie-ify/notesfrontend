@@ -1,9 +1,8 @@
 .note-form {
 	display: flex;
 	flex-direction: column;
-	row-gap: 2em;
+	row-gap: 1em;
 	min-width: 50%;
-	margin-top: 3em;
 }
 
 .notes {
@@ -29,7 +28,7 @@
 }
 
 .fa-long-arrow-left {
-	color: #fff;
+	color: #f98888;
 	font-size: 25px;
 }
 
@@ -41,11 +40,8 @@
 	padding: 15px;
 	outline: none;
 	border: 0;
-	box-shadow: 2px 2px rgb(17, 12, 12);
-}
-
-#submit-note-btn:hover {
-	background-color: rgb(87, 7, 114);
+	border-radius: 4px;
+	box-shadow: 2px 5px 5px rgb(224, 217, 217);
 }
 
 #submit-note-btn:disabled {

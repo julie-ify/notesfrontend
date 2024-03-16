@@ -1,7 +1,6 @@
 footer {
 	margin-top: auto;
 	padding: 1.5em;
-	background-color: rgb(8, 8, 63);
 	position: fixed;
 	bottom: 0;
 	left: 0;
@@ -16,6 +15,16 @@ footer ul {
 	justify-content: space-between;
 	align-items: center;
 }
+footer > div {
+	width: 50px;
+	height: 50px;
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 9999px;
+	box-shadow: 2px 5px 5px rgb(224, 217, 217);
+}
 
 .add {
 	position: absolute;
@@ -23,13 +32,11 @@ footer ul {
 	left: 41%;
 }
 
-.fa-plus-circle:hover {
-	color: #f98888;
+footer > div > i:hover {
+	color: #fba1a1;
 }
 
-.fa-plus-circle {
-	color: #fba1a1;
-	background-color: rgb(8, 8, 63);
+footer > div > i {
+	color: #f98888;
 	border-radius: 50%;
-	box-shadow: 2px 5px 5px rgb(37, 13, 13);
 }

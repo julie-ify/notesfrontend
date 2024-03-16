@@ -19,10 +19,11 @@ const Auth = () => {
 	React.useEffect(() => {
 		if (userData) {
 			const { token, user } = userData;
-			dispatch({ type: 'auth', payload: { token, username: user.username } });
+			console.log(userData)
+			dispatch({ type: 'auth', payload: { token, username: user.username, role: user.role } });
 			localStorage.setItem(
 				'auth',
-				JSON.stringify({ token, username: user.username })
+				JSON.stringify({ token, username: user.username, role: user.role })
 			);
 			navigate('/dashboard');
 		}
@@ -36,16 +37,32 @@ const Auth = () => {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify(formData),
-			}).then((response) => response.json()).catch(error => error)
+			})
+				.then((response) => response.json())
+				.catch((error) => error);
 		},
 		login: () => {
-			return fetch(state.url + '/login/', {
+			return fetch(state.url + '/login', {
 				method: 'post',
 				headers: {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify(formData),
-			}).then((response) => response.json());
+			})
+				.then((response) => {
+					if (!response.ok) {
+						if (response.status === 401) {
+							alert('Invalid username or password');
+						} else {
+							console.error('An error occurred:', error.message);
+						}
+					} else {
+						return response.json();
+					}
+				})
+				.catch((error) => {
+					console.error('An error occurred:', error.message);
+				});
 		},
 	};
 
@@ -75,7 +92,7 @@ const Auth = () => {
 	return (
 		<>
 			<Link to={'/'} className="back-btn">
-				<i className="fa fa-long-arrow-left"></i>
+			<span className='primary-color btn-font'>Go back</span>
 			</Link>
 			<form onSubmit={handleSubmit} className="auth-form">
 				<h1>{form}</h1>

@@ -1,20 +1,44 @@
+.nav-header {
+	background-color: rgb(8, 8, 63);
+	margin-bottom: 1em;
+	width: 100vw;
+}
+
 .signed-nav {
+	max-width: 375px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-}
-
-.nav-header {
-	background-color: rgb(8, 8, 63);
+	margin: 0 auto;
 	padding: 1em 1.5em;
-	margin-bottom: 3em;
 }
 
 header h1 {
-	font-size: 20px;
+	font-size: 12px;
+	color: #f98888;
+}
+
+
+.signed-nav span {
+	font-size: 15px;
+	color: #f98888;
+	text-transform: capitalize;
+}
+
+.signed-nav h3 {
+	font-size: 12px;
+	color: #f1f1f1;
+}
+
+.left-nav {
+	padding: 0 8px;
 }
 
 .not-signed-nav {
+	max-width: 375px;
 	display: flex;
+	align-items: center;
 	justify-content: space-between;
+	margin: 0 auto;
+	padding: 0 20px;
 }

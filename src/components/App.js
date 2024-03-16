@@ -8,11 +8,11 @@ import Dashboard from '../pages/Dashboard';
 import NoteForm from '../forms/Form';
 import Nav from './Nav';
 import { useAppState } from '../redux/appState';
-import Footer from './Footer';
 
 const App = () => {
 	const navigate = useNavigate();
-	const { dispatch } = useAppState();
+	const { state, dispatch } = useAppState();
+	
 	React.useEffect(() => {
 		const auth = JSON.parse(localStorage.getItem('auth'));
 		if (auth) {
@@ -25,14 +25,16 @@ const App = () => {
 
 	return (
 		<>
-			<Nav />
-			<div className="App">
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/auth/:form" element={<Auth />} />
-					<Route path="/notes/:type/:id" element={<NoteForm />} />
-					<Route path="/dashboard" element={<Dashboard />} />
-				</Routes>
+			<div className="App-container">
+				<Nav />
+				<div className="App-wrapper">
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/auth/:form" element={<Auth />} />
+						<Route path="/notes/:type/:id" element={<NoteForm />} />
+						<Route path="/dashboard" element={<Dashboard />} />
+					</Routes>
+				</div>
 			</div>
 		</>
 	);
