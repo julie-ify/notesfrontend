@@ -23,10 +23,13 @@ export const addNoteToApi = (noteData) => async (dispatch) => {
 		});
 
 		if (!responseInJson.ok) {
-			dispatch({
-				type: ERROR,
-				payload: response,
-			});
+			if (responseInJson.status === 422) {
+				const errorRes = await responseInJson.json()
+				dispatch({
+					type: ERROR,
+					payload: errorRes,
+				});
+			}
 		} else {
 			const response = await responseInJson.json();
 			dispatch({
